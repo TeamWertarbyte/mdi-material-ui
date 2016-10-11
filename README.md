@@ -22,7 +22,7 @@ npm install materialdesign-webfont-material-ui --save
 To use the icons, you need to include the webfont in your HTML files.
 
 ```html
-<link href="//cdn.materialdesignicons.com/1.5.54/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
+<link href="//cdn.materialdesignicons.com/1.7.22/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
 ```
 
 Then you can import and use the icons. Every icon is exported with its
