@@ -38,11 +38,10 @@ function transformForReact (element) {
   element.childNodes().filter((node) => node.name() !== 'text').forEach(transformForReact)
 }
 
-const icons = fs.readdirSync('./icons/icons/svg')
-  .filter(filename => /.*\.svg/.test(filename))
-  .map(filename => {
-    const icon = filename.substring(0, filename.length - 4)
-    const xml = libxmljs.parseXml(fs.readFileSync(path.resolve('icons', 'icons', 'svg', filename)))
+const mdiSvgPath = path.join(path.dirname(require.resolve('mdi-svg/meta.json')), 'svg')
+const icons = require('mdi-svg/meta.json')
+  .map((icon) => {
+    const xml = libxmljs.parseXml(fs.readFileSync(path.join(mdiSvgPath, `${icon.name}.svg`), 'utf8'))
     const svg = xml.root().childNodes().map((child) => {
       if (child.type() === 'text') return
       transformForReact(child)
@@ -52,11 +51,10 @@ const icons = fs.readdirSync('./icons/icons/svg')
     .replace()
 
     if (svg.length === 0) {
-      throw Error(`Unexpected number of paths (${xml.svg.path.length}) for ${icon}`)
+      throw Error(`Unexpected number of paths (${xml.svg.path.length}) for ${icon.name}`)
     }
     return {
-      icon,
-      name: `${pascalCase(icon)}Icon`,
+      name: `${pascalCase(icon.name)}Icon`,
       svg
     }
   })
@@ -64,11 +62,12 @@ const icons = fs.readdirSync('./icons/icons/svg')
 rimraf.sync(path.join(__dirname, 'lib'))
 mkdirp.sync(path.join(__dirname, 'lib'))
 
+// there is an 'svg' icon, so we can't call the SvgIcon component SvgIcon
 const code = `
   import React from 'react'
-  import SvgIcon from 'material-ui/SvgIcon'
+  import Icon from 'material-ui/SvgIcon'
 
-  ${icons.map(({ name, icon, svg }) => `export const ${name} = (props) => <SvgIcon {...props}>${svg}</SvgIcon>`).join('\n')}
+  ${icons.map(({ name, svg }) => `export const ${name} = (props) => <Icon {...props}>${svg}</Icon>`).join('\n')}
 `
 fs.writeFileSync(path.join(__dirname, 'lib', 'index.js'), babel.transform(code, {
   presets: ['es2015', 'react', 'stage-0'],
