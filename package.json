@@ -54,6 +54,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "build": "NODE_ENV=production node generate-module.js",
+    "pretest": "node generate-module.js",
     "test": "jest"
   },
   "private": true
