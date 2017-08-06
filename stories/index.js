@@ -3,7 +3,7 @@ import { storiesOf } from '@kadira/storybook'
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
-const icons = require('../lib')
+const icons = require('../package/index')
 
 function themed (children) {
   return (

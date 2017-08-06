@@ -1,11 +1,10 @@
 #!/usr/bin/env node
-const fs = require('fs')
+const fse = require('fs-extra')
 const path = require('path')
-const mkdirp = require('mkdirp')
-const rimraf = require('rimraf')
 const pascalCase = require('pascal-case')
 const babel = require('babel-core')
 const libxmljs = require('libxmljs')
+const pick = require('lodash.pick')
 
 function tryRemoveAttr (element, attributeName, matcher) {
   const attribute = element.attr(attributeName)
@@ -41,7 +40,7 @@ function transformForReact (element) {
 const mdiSvgPath = path.join(path.dirname(require.resolve('mdi-svg/meta.json')), 'svg')
 const icons = require('mdi-svg/meta.json')
   .map((icon) => {
-    const xml = libxmljs.parseXml(fs.readFileSync(path.join(mdiSvgPath, `${icon.name}.svg`), 'utf8'))
+    const xml = libxmljs.parseXml(fse.readFileSync(path.join(mdiSvgPath, `${icon.name}.svg`), 'utf8'))
     const svg = xml.root().childNodes().map((child) => {
       if (child.type() === 'text') return
       transformForReact(child)
@@ -54,22 +53,58 @@ const icons = require('mdi-svg/meta.json')
       throw Error(`Unexpected number of paths (${xml.svg.path.length}) for ${icon.name}`)
     }
     return {
-      name: `${pascalCase(icon.name)}Icon`,
+      name: pascalCase(icon.name),
       svg
     }
   })
 
-rimraf.sync(path.join(__dirname, 'lib'))
-mkdirp.sync(path.join(__dirname, 'lib'))
+fse.removeSync(path.join(__dirname, 'package'))
+fse.mkdirpSync(path.join(__dirname, 'package'))
 
-// there is an 'svg' icon, so we can't call the SvgIcon component SvgIcon
-const code = `
-  import React from 'react'
-  import Icon from 'material-ui/SvgIcon'
-
-  ${icons.map(({ name, svg }) => `export const ${name} = (props) => <Icon {...props}>${svg}</Icon>`).join('\n')}
+for (const { name, svg } of icons) {
+  const code = `import React from 'react'
+import SvgIcon from 'material-ui/SvgIcon'
+export default (props) => <SvgIcon {...props}>${svg}</SvgIcon>
 `
-fs.writeFileSync(path.join(__dirname, 'lib', 'index.js'), babel.transform(code, {
-  presets: ['es2015', 'react', 'stage-0'],
-  compact: true
+
+  // commonjs module syntax
+  fse.writeFileSync(path.join(__dirname, 'package', `${name}.js`), babel.transform(code, {
+    presets: ['es2015', 'react', 'stage-0'],
+    compact: process.env.NODE_ENV === 'production'
+  }).code)
+}
+
+// es2015 module syntax
+const allExports = icons.map(({ name }) => `export { default as ${name} } from './${name}'`).join('\n')
+fse.writeFileSync(path.join(__dirname, 'package', 'index.es.js'), allExports)
+
+// commonjs module
+fse.writeFileSync(path.join(__dirname, 'package', 'index.js'), babel.transform(allExports, {
+  plugins: ['transform-es2015-modules-commonjs'],
+  compact: process.env.NODE_ENV === 'production'
 }).code)
+
+// copy other files
+;[
+  'README.md',
+  'NOTICE',
+  'LICENSE',
+  '.npmignore'
+].forEach((file) => fse.copySync(path.join(__dirname, file), path.join(__dirname, 'package', file)))
+
+const packageJson = require('./package.json')
+fse.writeFileSync(path.join(__dirname, 'package', 'package.json'), JSON.stringify(pick(packageJson, [
+  'name',
+  'version',
+  'description',
+  'main',
+  'module',
+  'jsnext:main',
+  'repository',
+  'keywords',
+  'author',
+  'license',
+  'bugs',
+  'homepage',
+  'peerDependencies'
+])), 'utf-8')

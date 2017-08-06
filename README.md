@@ -1,5 +1,4 @@
 # Material Design Icons for Material-UI
-
 [![npm](https://img.shields.io/npm/v/mdi-material-ui.svg)](https://www.npmjs.com/package/mdi-material-ui)
 [![Material Design Icons version](https://img.shields.io/badge/mdi-v2.0.46-blue.svg)](https://github.com/Templarian/MaterialDesign-SVG/)
 
@@ -20,21 +19,36 @@ npm install mdi-material-ui --save
 ```
 
 ## Usage
+Every icon is exported with its original name in PascalCase. So `coffee` becomes `Coffee`,
+`cloud-print-outline` is exported as `CloudPrintOutline` and so on.
 
-Every icon is exported with its original name in PascalCase, plus _Icon_. So `coffee` becomes `CoffeeIcon`,
-`cloud-print-outline` is exported as `CloudPrintOutlineIcon` and so on.
+### With tree-shaking
+If your environment supports tree-shaking and you are sure that it works fine in your setup, you can simply import the icons as follows:
 
 ```js
-import { CoffeeIcon } from 'mdi-material-ui'
+import { Coffee, Food } from 'mdi-material-ui'
+```
 
-// ...
+### Without tree-shaking
+If your environment doesn't support tree-shaking, you should only import the icons that you actually need in order to ensure that you don't end up bundling _all_ icons.
+  
+```js
+import Coffee from 'mdi-material-ui/Coffee'
+import Food from 'mdi-material-ui/Food'
+```
 
-render() {
-  return (
-    <div>
-      Enjoy your coffee! <CoffeeIcon />
-    </div>
-  )
+If you think that this is far too verbose (I agree!), consider using [babel-plugin-direct-import](https://github.com/umidbekkarimov/babel-plugin-direct-import). Install it and adjust your `.babelrc` by adding the following snippet to the plugins section:
+
+```js
+{
+  // ...
+  plugins: [
+    // ...
+    ["direct-import", [{
+      name: "mdi-material-ui",
+      indexFile: "mdi-material-ui/index.es"
+    }]]
+  ]
 }
 ```
 
@@ -42,7 +56,6 @@ render() {
 Feel more like using a webfont instead of inline svg? We've [got your back][materialdesign-webfont-material-ui]!
 
 ## License
-
 The scripts included in this repository are licensed under the WTFPL.
 The icons are licensed under the MIT license (see [Material Design Icons](https://github.com/Templarian/MaterialDesign-SVG) and the [NOTICE][] file).
 
