@@ -44,10 +44,7 @@ If you think that this is far too verbose (I agree!), consider using [babel-plug
   // ...
   plugins: [
     // ...
-    ["direct-import", [{
-      name: "mdi-material-ui",
-      indexFile: "mdi-material-ui/index.es"
-    }]]
+    ["direct-import", ["mdi-material-ui"]]
   ]
 }
 ```
