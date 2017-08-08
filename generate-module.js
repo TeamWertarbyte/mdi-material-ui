@@ -93,6 +93,7 @@ fse.writeFileSync(path.join(__dirname, 'package', 'index.js'), babel.transform(a
 ].forEach((file) => fse.copySync(path.join(__dirname, file), path.join(__dirname, 'package', file)))
 
 const packageJson = require('./package.json')
+packageJson.name = 'mdi-material-ui'
 fse.writeFileSync(path.join(__dirname, 'package', 'package.json'), JSON.stringify(pick(packageJson, [
   'name',
   'version',
