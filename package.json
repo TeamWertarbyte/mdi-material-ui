@@ -35,7 +35,7 @@
     "libxmljs": "^0.18.4",
     "lodash.pick": "^4.4.0",
     "material-ui": "^0.17.4",
-    "mdi-svg": "^2.0.46",
+    "mdi-svg": "2.0.46",
     "pascal-case": "^1.1.2",
     "postcss": "^5.2.6",
     "postcss-url": "^5.1.2",
