@@ -1,6 +1,6 @@
 {
   "name": "mdi-material-ui-generator",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Material-UI SvgIcon components for Material Design Icons.",
   "main": "./index.js",
   "module": "./index.es.js",
