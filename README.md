@@ -1,4 +1,6 @@
 # Material Design Icons for Material-UI
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/TeamWertarbyte/mdi-material-ui.svg)](https://greenkeeper.io/)
 [![npm](https://img.shields.io/npm/v/mdi-material-ui.svg)](https://www.npmjs.com/package/mdi-material-ui)
 [![Material Design Icons version](https://img.shields.io/badge/mdi-v2.0.46-blue.svg)](https://github.com/Templarian/MaterialDesign-SVG/)
 
