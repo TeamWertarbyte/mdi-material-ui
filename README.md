@@ -27,6 +27,9 @@ If your environment supports tree-shaking and you are sure that it works fine in
 
 ```js
 import { Coffee, Food } from 'mdi-material-ui'
+
+<Coffee />
+<Food />
 ```
 
 ### Without tree-shaking
@@ -35,6 +38,9 @@ If your environment doesn't support tree-shaking, you should only import the ico
 ```js
 import Coffee from 'mdi-material-ui/Coffee'
 import Food from 'mdi-material-ui/Food'
+
+<Coffee />
+<Food />
 ```
 
 If you think that this is far too verbose (I agree!), consider using [babel-plugin-direct-import](https://github.com/umidbekkarimov/babel-plugin-direct-import). Install it and adjust your `.babelrc` by adding the following snippet to the plugins section:
