@@ -57,6 +57,10 @@ const icons = require('mdi-svg/meta.json')
       svg
     }
   })
+const iconFiles = fse.readdirSync(mdiSvgPath)
+if (iconFiles.length !== icons.length) {
+  console.warn(`${icons.length} icons specified in meta.json but ${iconFiles.length} svg files found`)
+}
 
 fse.removeSync(path.join(__dirname, 'package'))
 fse.mkdirpSync(path.join(__dirname, 'package'))
