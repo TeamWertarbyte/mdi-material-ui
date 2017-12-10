@@ -112,4 +112,4 @@ fse.writeFileSync(path.join(__dirname, 'package', 'package.json'), JSON.stringif
   'bugs',
   'homepage',
   'peerDependencies'
-])), 'utf-8')
+]), null, 2), 'utf-8')
