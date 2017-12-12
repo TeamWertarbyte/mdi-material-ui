@@ -76,11 +76,18 @@ export default (props) => <SvgIcon {...props}>${svg}</SvgIcon>
     presets: ['es2015', 'react', 'stage-0'],
     compact: process.env.NODE_ENV === 'production'
   }).code)
+
+  // typescript definition
+  fse.writeFileSync(path.join(__dirname, 'package', `${name}.d.ts`), `export { default } from 'material-ui/SvgIcon'
+`)
 }
 
 // es2015 module syntax
 const allExports = icons.map(({ name }) => `export { default as ${name} } from './${name}'`).join('\n')
 fse.writeFileSync(path.join(__dirname, 'package', 'index.es.js'), allExports)
+
+// typescript index definition (looks exactly the same)
+fse.writeFileSync(path.join(__dirname, 'package', 'index.d.ts'), allExports)
 
 // commonjs module
 fse.writeFileSync(path.join(__dirname, 'package', 'index.js'), babel.transform(allExports, {
