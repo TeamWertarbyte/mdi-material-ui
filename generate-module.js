@@ -112,6 +112,7 @@ fse.writeFileSync(path.join(__dirname, 'package', 'package.json'), JSON.stringif
   'main',
   'module',
   'jsnext:main',
+  'sideEffects',
   'repository',
   'keywords',
   'author',

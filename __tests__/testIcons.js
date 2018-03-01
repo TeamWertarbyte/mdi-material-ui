@@ -5,8 +5,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import * as commonjsIcons from '../package/index'
 import * as es2015Icons from '../package/index.es'
 
-console.log('hi')
-
 describe('the generated commonjs module', () => {
   it('should export icons that render to SVGs', () => {
     for (const iconName of Object.keys(commonjsIcons)) {

@@ -5,6 +5,7 @@
   "main": "./index.js",
   "module": "./index.es.js",
   "jsnext:main": "./index.es.js",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TeamWertarbyte/mdi-material-ui.git"
