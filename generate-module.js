@@ -37,8 +37,8 @@ function transformForReact (element) {
   element.childNodes().filter((node) => node.name() !== 'text').forEach(transformForReact)
 }
 
-const mdiSvgPath = path.join(path.dirname(require.resolve('mdi-svg/meta.json')), 'svg')
-const icons = require('mdi-svg/meta.json')
+const mdiSvgPath = path.join(path.dirname(require.resolve('@mdi/svg/meta.json')), 'svg')
+const icons = require('@mdi/svg/meta.json')
   .map((icon) => {
     const xml = libxmljs.parseXml(fse.readFileSync(path.join(mdiSvgPath, `${icon.name}.svg`), 'utf8'))
     const svg = xml.root().childNodes().map((child) => {
