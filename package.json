@@ -38,14 +38,9 @@
     "lodash.pick": "^4.4.0",
     "material-ui": "^0.17.4",
     "pascal-case": "^1.1.2",
-    "postcss": "^5.2.6",
-    "postcss-url": "^5.1.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-test-renderer": "^15.6.1",
-    "request": "^2.79.0",
-    "webpack": "^2.4.1",
-    "xml2js": "^0.4.17"
+    "react-test-renderer": "^15.6.1"
   },
   "peerDependencies": {
     "material-ui": "^0.17.4 || ^1.0.0-beta.1",
