@@ -46,8 +46,8 @@ const icons = require('@mdi/svg/meta.json')
       transformForReact(child)
       return child.toString().trim()
     }).join('').trim()
-    .replace(/xlink:href/ig, 'xlinkHref')
-    .replace()
+      .replace(/xlink:href/ig, 'xlinkHref')
+      .replace()
 
     if (svg.length === 0) {
       throw Error(`Unexpected number of paths (${xml.svg.path.length}) for ${icon.name}`)
