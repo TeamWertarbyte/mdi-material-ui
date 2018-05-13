@@ -26,6 +26,7 @@
   "homepage": "https://github.com/TeamWertarbyte/mdi-material-ui#readme",
   "devDependencies": {
     "@kadira/storybook": "^2.21.0",
+    "@material-ui/core": "^1.0.0-rc.0",
     "@mdi/svg": "^2.3.54",
     "babel-core": "^6.8.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
@@ -35,7 +36,6 @@
     "fs-extra": "^4.0.1",
     "jest": "^20.0.4",
     "lodash.pick": "^4.4.0",
-    "material-ui": "^0.17.4",
     "pascal-case": "^1.1.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
@@ -43,13 +43,13 @@
     "xml2js": "^0.4.19"
   },
   "peerDependencies": {
-    "material-ui": "^0.17.4 || ^1.0.0-beta.1",
-    "react": "^15.0.2 || ^16.0.0"
+    "@material-ui/core": "^1.0.0-rc.0",
+    "react": "^16.3.0"
   },
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build": "NODE_ENV=production node generate-module.js",
+    "build": "set NODE_ENV=production && node generate-module.js",
     "pretest": "node generate-module.js",
     "test": "jest"
   },
