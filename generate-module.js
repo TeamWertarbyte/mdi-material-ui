@@ -42,7 +42,7 @@ const pick = require('lodash.pick')
 
   for (const { name, svg } of icons) {
     const code = `import React from 'react'
-  import SvgIcon from 'material-ui/SvgIcon'
+  import SvgIcon from '@material-ui/core/SvgIcon'
   export default (props) => <SvgIcon {...props}>${svg}</SvgIcon>
   `
 
@@ -53,7 +53,7 @@ const pick = require('lodash.pick')
     }).code)
 
     // typescript definition
-    fse.writeFileSync(path.join(__dirname, 'package', `${name}.d.ts`), `export { default } from 'material-ui/SvgIcon'
+    fse.writeFileSync(path.join(__dirname, 'package', `${name}.d.ts`), `export { default } from '@material-ui/core/SvgIcon'
   `)
   }
 

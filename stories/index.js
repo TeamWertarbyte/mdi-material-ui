@@ -1,17 +1,12 @@
 import React from 'react'
 import { storiesOf } from '@kadira/storybook'
-import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
 const icons = require('../package/index')
 
 function themed (children) {
   return (
-    <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-      <div style={{ fontFamily: 'Roboto, sans-serif' }}>
-        {children}
-      </div>
-    </MuiThemeProvider>
+    <div style={{ fontFamily: 'Roboto, sans-serif' }}>
+      {children}
+    </div>
   )
 }
 
@@ -20,7 +15,7 @@ iconStories.add(`all icons (${Object.keys(icons).length.toLocaleString()})`, () 
   <div>
     {Object.keys(icons).map((icon) => {
       const Icon = icons[icon]
-      return <Icon key={icon} color='#f00' />
+      return <Icon key={icon} />
     })}
   </div>
 ))

@@ -1,7 +1,7 @@
 /* eslint-env jest */
 import React from 'react'
 import renderer from 'react-test-renderer'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import * as commonjsIcons from '../package/index'
 import * as es2015Icons from '../package/index.es'
 
