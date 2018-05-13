@@ -37,9 +37,9 @@
     "jest": "^20.0.4",
     "lodash.pick": "^4.4.0",
     "pascal-case": "^1.1.2",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-test-renderer": "^15.6.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-test-renderer": "^16.3.2",
     "xml2js": "^0.4.19"
   },
   "peerDependencies": {
