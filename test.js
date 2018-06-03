@@ -14,6 +14,7 @@ for (const iconName of Object.keys(commonjsIcons)) {
   test(`icons > ${iconName}`, (t) => {
     const renderedIcon = renderer.create(React.createElement(commonjsIcons[iconName])).toJSON()
     t.is(renderedIcon.type, 'svg')
+    t.is(commonjsIcons[iconName].muiName, 'SvgIcon')
   })
 }
 test('ES module index file', (t) => {
