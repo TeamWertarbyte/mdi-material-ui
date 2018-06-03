@@ -19,6 +19,7 @@ for (const iconName of Object.keys(commonjsIcons)) {
       )
     ).toJSON()
     t.is(renderedIcon.type, 'svg')
+    t.is(commonjsIcons[iconName].muiName, 'SvgIcon')
   })
 }
 test('ES module index file', (t) => {

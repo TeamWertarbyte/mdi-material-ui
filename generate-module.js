@@ -42,8 +42,8 @@ const pick = require('lodash.pick')
 
   for (const { name, svg } of icons) {
     const code = `import React from 'react'
-  import SvgIcon from 'material-ui/SvgIcon'
-  export default (props) => <SvgIcon {...props}>${svg}</SvgIcon>
+  import createIcon from './util/createIcon'
+  export default createIcon(<g>${svg}</g>)
   `
 
     // commonjs module syntax
@@ -69,6 +69,16 @@ const pick = require('lodash.pick')
     plugins: ['transform-es2015-modules-commonjs'],
     compact: process.env.NODE_ENV === 'production'
   }).code)
+
+  // createIcon function
+  fse.mkdirSync(path.join(__dirname, 'package', 'util'))
+  fse.writeFileSync(
+    path.join(__dirname, 'package', 'util', 'createIcon.js'),
+    babel.transform(fse.readFileSync(path.join(__dirname, 'src', 'util', 'createIcon.js')), {
+      presets: ['es2015', 'react', 'stage-0'],
+      compact: process.env.NODE_ENV === 'production'
+    }).code
+  )
 
   // copy other files
   ;[
