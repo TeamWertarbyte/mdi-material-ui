@@ -55,9 +55,6 @@ If you think that this is far too verbose (I agree!), consider using [babel-plug
 }
 ```
 
-## Related projects
-Feel more like using a webfont instead of inline svg? We've [got your back][materialdesign-webfont-material-ui]!
-
 ## License
 The scripts included in this repository are licensed under the WTFPL.
 The icons are licensed under the MIT license (see [Material Design Icons](https://github.com/Templarian/MaterialDesign-SVG) and the [NOTICE][] file).
