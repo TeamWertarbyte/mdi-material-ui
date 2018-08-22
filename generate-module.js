@@ -3,47 +3,22 @@ const fse = require('fs-extra')
 const path = require('path')
 const pascalCase = require('pascal-case')
 const babel = require('babel-core')
-const xml2js = require('xml2js')
 const pick = require('lodash.pick')
 
 ;(async () => {
-  const mdiSvgPath = path.join(path.dirname(require.resolve('@mdi/svg/meta.json')), 'svg')
-  const icons = await Promise.all(require('@mdi/svg/meta.json').map(async (icon) => {
-    const xml = await new Promise((resolve, reject) => {
-      xml2js.parseString(fse.readFileSync(path.join(mdiSvgPath, `${icon.name}.svg`), 'utf8'), (err, xml) => {
-        if (err) {
-          reject(err)
-        } else {
-          resolve(xml)
-        }
-      })
-    })
-
-    if (Object.keys(xml.svg).length > 2) throw Error(`The SVG of icon ${icon.name} contains unknown children`)
-    const svg = xml.svg.path.map((child) => {
-      return new xml2js.Builder({ headless: true }).buildObject({ path: child })
-    }).join('').trim()
-
-    if (svg.length === 0) {
-      throw Error(`Unexpected number of paths (${xml.svg.path.length}) for ${icon.name}`)
-    }
-    return {
-      name: pascalCase(icon.name),
-      svg
-    }
-  }))
-  const iconFiles = fse.readdirSync(mdiSvgPath)
-  if (iconFiles.length !== icons.length) {
-    console.warn(`${icons.length} icons specified in meta.json but ${iconFiles.length} svg files found`)
-  }
+  const icons = Object.entries(require('@mdi/js'))
+    .filter(([name]) => name.indexOf('mdi') === 0)
+    .map(([name, path]) => ({
+      name: pascalCase(name.substr(3)), // remove mdi prefix
+      svgPath: path
+    }))
 
   fse.removeSync(path.join(__dirname, 'package'))
   fse.mkdirpSync(path.join(__dirname, 'package'))
 
-  for (const { name, svg } of icons) {
-    const code = `import React from 'react'
-  import createIcon from './util/createIcon'
-  export default createIcon(<g>${svg}</g>)
+  for (const { name, svgPath } of icons) {
+    const code = `import createIcon from './util/createIcon'
+  export default createIcon('${svgPath}')
   `
 
     // commonjs module syntax
@@ -79,6 +54,12 @@ const pick = require('lodash.pick')
       compact: process.env.NODE_ENV === 'production'
     }).code
   )
+
+  // update readme
+  const mdiVersion = require(path.join(require.resolve('@mdi/js'), '..', '..', 'package.json')).version
+  let readme = await fse.readFile(path.join(__dirname, 'README.md'), 'utf-8')
+  readme = readme.replace(/img\.shields\.io\/badge\/mdi-v(.+?)-blue\.svg/g, `img.shields.io/badge/mdi-v${mdiVersion}-blue.svg`)
+  await fse.writeFile(path.join(__dirname, 'README.md'), readme, 'utf-8')
 
   // copy other files
   ;[
