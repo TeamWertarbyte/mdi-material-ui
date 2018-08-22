@@ -1,8 +1,8 @@
 import React from 'react'
 import SvgIcon from '@material-ui/core/SvgIcon'
 
-export default (svg) => {
-  const Icon = (props) => <SvgIcon {...props}>{svg}</SvgIcon>
+export default (path) => {
+  const Icon = (props) => <SvgIcon {...props}><path d={path} /></SvgIcon>
   Icon.muiName = 'SvgIcon'
   return Icon
 }

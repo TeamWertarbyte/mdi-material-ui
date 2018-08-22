@@ -27,7 +27,7 @@
   "devDependencies": {
     "@kadira/storybook": "^2.21.0",
     "@material-ui/core": "^1.0.0-rc.0",
-    "@mdi/svg": "^2.5.94",
+    "@mdi/js": "^2.6.95",
     "ava": "^0.25.0",
     "babel-core": "^6.8.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
