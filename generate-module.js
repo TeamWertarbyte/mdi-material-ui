@@ -55,6 +55,12 @@ const pick = require('lodash.pick')
     }).code
   )
 
+  // update readme
+  const mdiVersion = require(path.join(require.resolve('@mdi/js'), '..', '..', 'package.json')).version
+  let readme = await fse.readFile(path.join(__dirname, 'README.md'), 'utf-8')
+  readme = readme.replace(/img\.shields\.io\/badge\/mdi-v(.+?)-blue\.svg/g, `img.shields.io/badge/mdi-v${mdiVersion}-blue.svg`)
+  await fse.writeFile(path.join(__dirname, 'README.md'), readme, 'utf-8')
+
   // copy other files
   ;[
     'README.md',
