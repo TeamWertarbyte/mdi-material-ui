@@ -1,6 +1,6 @@
 # Material Design Icons for Material-UI
 [![npm](https://img.shields.io/npm/v/mdi-material-ui/legacy.svg)](https://www.npmjs.com/package/mdi-material-ui)
-[![Material Design Icons version](https://img.shields.io/badge/mdi-v3.0.39-blue.svg)](https://github.com/Templarian/MaterialDesign-SVG/)
+[![Material Design Icons version](https://img.shields.io/badge/mdi-v3.2.89-blue.svg)](https://github.com/Templarian/MaterialDesign-SVG/)
 
 This module provides [Material-UI][material-ui] `<SvgIcon />` components for all
 [Material Design Icons][md-icons]. This is pretty handy if you use React and Material-UI
