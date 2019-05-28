@@ -2,7 +2,7 @@
 const fse = require('fs-extra')
 const path = require('path')
 const pascalCase = require('pascal-case')
-const babel = require('babel-core')
+const babel = require('@babel/core')
 const pick = require('lodash.pick')
 
 ;(async () => {
@@ -23,7 +23,8 @@ const pick = require('lodash.pick')
 
     // commonjs module syntax
     fse.writeFileSync(path.join(__dirname, 'package', `${name}.js`), babel.transform(code, {
-      presets: ['es2015', 'react', 'stage-0'],
+      presets: ['@babel/preset-react', '@babel/preset-env'],
+      plugins: ['@babel/plugin-proposal-class-properties'],
       compact: process.env.NODE_ENV === 'production'
     }).code)
 
@@ -41,7 +42,7 @@ const pick = require('lodash.pick')
 
   // commonjs module
   fse.writeFileSync(path.join(__dirname, 'package', 'index.js'), babel.transform(allExports, {
-    plugins: ['transform-es2015-modules-commonjs'],
+    plugins: ['@babel/plugin-transform-modules-commonjs'],
     compact: process.env.NODE_ENV === 'production'
   }).code)
 
@@ -50,7 +51,8 @@ const pick = require('lodash.pick')
   fse.writeFileSync(
     path.join(__dirname, 'package', 'util', 'createIcon.js'),
     babel.transform(fse.readFileSync(path.join(__dirname, 'src', 'util', 'createIcon.js')), {
-      presets: ['es2015', 'react', 'stage-0'],
+      presets: ['@babel/preset-react', '@babel/preset-env'],
+      plugins: ['@babel/plugin-proposal-class-properties'],
       compact: process.env.NODE_ENV === 'production'
     }).code
   )
