@@ -1,6 +1,7 @@
 # Material Design Icons for Material-UI
 [![npm](https://img.shields.io/npm/v/mdi-material-ui.svg)](https://www.npmjs.com/package/mdi-material-ui)
-[![Material Design Icons version](https://img.shields.io/badge/mdi-v3.6.95-blue.svg)](https://github.com/Templarian/MaterialDesign-SVG/)
+[![Material Design Icons version](https://img.shields.io/badge/mdi-v3.7.95-blue.svg)](https://github.com/Templarian/MaterialDesign)
+[![Material Design Icons version](https://img.shields.io/badge/mdi--light-v0.2.63-blue.svg)](https://github.com/Templarian/MaterialDesignLight)
 
 This module provides [Material-UI][material-ui] `<SvgIcon />` components for all
 [Material Design Icons][md-icons]. This is pretty handy if you use React and Material-UI
@@ -22,14 +23,19 @@ npm install mdi-material-ui --save
 Every icon is exported with its original name in PascalCase. So `coffee` becomes `Coffee`,
 `cloud-print-outline` is exported as `CloudPrintOutline` and so on.
 
+The Material Design _Light_ icons are included in the `/light` subdirectory.
+
 ### With tree-shaking
 If your environment supports tree-shaking and you are sure that it works fine in your setup, you can simply import the icons as follows:
 
 ```js
 import { Coffee, Food } from 'mdi-material-ui'
+import { Camera, Settings } from 'mdi-material-ui/light'
 
 <Coffee />
 <Food />
+<Camera />
+<Settings />
 ```
 
 ### Without tree-shaking
@@ -38,21 +44,13 @@ If your environment doesn't support tree-shaking, you should only import the ico
 ```js
 import Coffee from 'mdi-material-ui/Coffee'
 import Food from 'mdi-material-ui/Food'
+import Camera from 'mdi-material-ui/light/Camera'
+import Settings from 'mdi-material-ui/light/Settings'
 
 <Coffee />
 <Food />
-```
-
-If you think that this is far too verbose (I agree!), consider using [babel-plugin-direct-import](https://github.com/umidbekkarimov/babel-plugin-direct-import). Install it and adjust your `.babelrc` by adding the following snippet to the plugins section:
-
-```js
-{
-  // ...
-  plugins: [
-    // ...
-    ["direct-import", ["mdi-material-ui"]]
-  ]
-}
+<Camera />
+<Settings />
 ```
 
 ## License
