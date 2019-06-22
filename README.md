@@ -1,5 +1,5 @@
 # Material Design Icons for Material-UI
-[![npm](https://img.shields.io/npm/v/mdi-material-ui.svg)](https://www.npmjs.com/package/mdi-material-ui)
+[![npm](https://img.shields.io/npm/v/mdi-material-ui/mui-v3.svg)](https://www.npmjs.com/package/mdi-material-ui)
 [![Material Design Icons version](https://img.shields.io/badge/mdi-v3.7.95-blue.svg)](https://github.com/Templarian/MaterialDesign)
 [![Material Design Icons version](https://img.shields.io/badge/mdi--light-v0.2.63-blue.svg)](https://github.com/Templarian/MaterialDesignLight)
 
@@ -16,7 +16,7 @@ is exported.
 
 ## Installation
 ```shell
-npm install mdi-material-ui --save
+npm install mdi-material-ui@mui-v3 --save
 ```
 
 ## Usage
