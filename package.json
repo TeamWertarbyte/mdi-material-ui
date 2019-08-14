@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/TeamWertarbyte/mdi-material-ui#readme",
   "devDependencies": {
-    "@mdi/js": "^3.9.97",
+    "@mdi/js": "^4.0.96",
     "@mdi/light-js": "^0.2.63",
     "@storybook/react": "^3.4.11",
     "ava": "^0.25.0",
