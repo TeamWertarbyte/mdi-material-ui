@@ -94,8 +94,8 @@ const pick = require('lodash.pick')
   // copy other files
   ;[
     'README.md',
-    'NOTICE',
-    'LICENSE',
+    'NOTICE.txt',
+    'LICENSE.txt',
     '.npmignore'
   ].forEach((file) => fse.copySync(path.join(__dirname, file), path.join(__dirname, 'package', file)))
 
