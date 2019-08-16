@@ -39,7 +39,11 @@ test('ES module index file', (t) => {
 
 for (const iconName of Object.keys(commonjsIconsLight)) {
   test(`light icons > ${iconName}`, (t) => {
-    const renderedIcon = renderer.create(React.createElement(commonjsIconsLight[iconName])).toJSON()
+    const renderedIcon = renderer.create(
+      React.createElement(MuiThemeProvider, {},
+        React.createElement(commonjsIconsLight[iconName])
+      )
+    ).toJSON()
     t.is(renderedIcon.type, 'svg')
     t.is(commonjsIconsLight[iconName].muiName, 'SvgIcon')
   })
