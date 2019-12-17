@@ -21,11 +21,11 @@ npm install mdi-material-ui --save
 
 There are three major versions of this package, each one for different Material-UI releases. All three versions will receive icon updates as minor releases for the foreseeable future.
 
-| Material-UI | mdi-material-ui |
-|---|---|
-|0.x|^4.0.0|
-|^1.0.0, ^3.0.0|^5.0.0|
-|^4.0.0|^6.0.0|
+| Material-UI | mdi-material-ui | npm tag |
+|---|---|---|
+|0.x|^4.0.0|latest|
+|^1.0.0, ^3.0.0|^5.0.0|mui-v3|
+|^4.0.0|^6.0.0|legacy|
 
 ## Usage
 Every icon is exported with its original name in PascalCase. So `coffee` becomes `Coffee`,
