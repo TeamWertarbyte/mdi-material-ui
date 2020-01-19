@@ -40,7 +40,7 @@
     "pascal-case": "^1.1.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "^3.0.1",
+    "react-scripts": "^3.3.0",
     "react-test-renderer": "^16.8.6",
     "xml2js": "^0.4.19"
   },
