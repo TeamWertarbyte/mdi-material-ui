@@ -4,14 +4,36 @@ const path = require('path')
 const pascalCase = require('pascal-case')
 const babel = require('babel-core')
 const pick = require('lodash.pick')
+const filenameMap = require('./filenameMap')
 
-;(async () => {
+function checkNameClashes (icons) {
+  const caseNameClashes = icons.filter(
+    (icon) =>
+      icon.filename == null &&
+      icons.filter(
+        (icon2) =>
+          icon2.filename == null &&
+          icon2.name.toLowerCase() === icon.name.toLowerCase()
+      ).length > 1
+  )
+  if (caseNameClashes.length > 0) {
+    throw new Error(
+      `The following icons have the same file name (case insensitive): ${caseNameClashes
+        .map((icon) => icon.name)
+        .join(', ')}`
+    )
+  }
+}
+
+(async () => {
   const icons = Object.entries(require('@mdi/js'))
     .filter(([name]) => name.indexOf('mdi') === 0)
     .map(([name, path]) => ({
       name: pascalCase(name.substr(3)), // remove mdi prefix
+      filename: filenameMap[name.substr(3)],
       svgPath: path
     }))
+  checkNameClashes(icons)
 
   const lightIcons = Object.entries(require('@mdi/light-js'))
     .filter(([name]) => name.indexOf('mdil') === 0)
@@ -19,45 +41,46 @@ const pick = require('lodash.pick')
       name: pascalCase(name.substr(4)), // remove mdil prefix
       svgPath: path
     }))
+  checkNameClashes(lightIcons)
 
   fse.removeSync(path.join(__dirname, 'package'))
   fse.mkdirpSync(path.join(__dirname, 'package', 'light'))
 
-  for (const { name, svgPath } of icons) {
+  for (const { name, filename, svgPath } of icons) {
     const code = `import createIcon from './util/createIcon'
   export default createIcon('${svgPath}')
   `
 
     // commonjs module syntax
-    fse.writeFileSync(path.join(__dirname, 'package', `${name}.js`), babel.transform(code, {
+    fse.writeFileSync(path.join(__dirname, 'package', `${filename || name}.js`), babel.transform(code, {
       presets: ['es2015', 'react', 'stage-0'],
       compact: process.env.NODE_ENV === 'production'
     }).code)
 
     // typescript definition
-    fse.writeFileSync(path.join(__dirname, 'package', `${name}.d.ts`), `export { default } from 'material-ui/SvgIcon'
+    fse.writeFileSync(path.join(__dirname, 'package', `${filename || name}.d.ts`), `export { default } from 'material-ui/SvgIcon'
   `)
   }
 
-  for (const { name, svgPath } of lightIcons) {
+  for (const { name, filename, svgPath } of lightIcons) {
     const code = `import createIcon from '../util/createIcon'
   export default createIcon('${svgPath}')
   `
 
     // commonjs module syntax
-    fse.writeFileSync(path.join(__dirname, 'package', 'light', `${name}.js`), babel.transform(code, {
+    fse.writeFileSync(path.join(__dirname, 'package', 'light', `${filename || name}.js`), babel.transform(code, {
       presets: ['es2015', 'react', 'stage-0'],
       compact: process.env.NODE_ENV === 'production'
     }).code)
 
     // typescript definition
-    fse.writeFileSync(path.join(__dirname, 'package', 'light', `${name}.d.ts`), `export { default } from '@material-ui/core/SvgIcon'
+    fse.writeFileSync(path.join(__dirname, 'package', 'light', `${filename || name}.d.ts`), `export { default } from '@material-ui/core/SvgIcon'
   `)
   }
 
   const generateIndexFiles = (destination, icons) => {
     // es2015 module syntax
-    const allExports = icons.map(({ name }) => `export { default as ${name} } from './${name}'`).join('\n')
+    const allExports = icons.map(({ name, filename }) => `export { default as ${name} } from './${filename || name}'`).join('\n')
     fse.writeFileSync(path.join(destination, 'index.es.js'), allExports)
   
     // typescript index definition (looks exactly the same)

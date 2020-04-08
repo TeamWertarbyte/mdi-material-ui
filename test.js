@@ -2,7 +2,8 @@ import test from 'ava'
 import React from 'react'
 import renderer from 'react-test-renderer'
 import fs from 'fs'
-import { MuiThemeProvider } from 'material-ui/styles';
+import { MuiThemeProvider } from 'material-ui/styles'
+const filenameMap = require('./filenameMap')
 const commonjsIcons = require('./package/index')
 const commonjsIconsLight = require('./package/light/index')
 
@@ -32,7 +33,7 @@ test('ES module index file', (t) => {
 
   for (const line of esmReExports) {
     const match = line.match(/^export \{ default as (.+?) \} from '\.\/(.+?)'$/)
-    t.is(match[1], match[2])
+    t.is(filenameMap[match[1]] || match[1], match[2])
     t.truthy(commonjsIcons[match[1]])
   }
 })
