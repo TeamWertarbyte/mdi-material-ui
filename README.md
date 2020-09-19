@@ -1,6 +1,6 @@
 # Material Design Icons for Material-UI
 [![npm](https://img.shields.io/npm/v/mdi-material-ui.svg)](https://www.npmjs.com/package/mdi-material-ui)
-[![Material Design Icons version](https://img.shields.io/badge/mdi-v5.5.55-blue.svg)](https://github.com/Templarian/MaterialDesign)
+[![Material Design Icons version](https://img.shields.io/badge/mdi-v5.6.55-blue.svg)](https://github.com/Templarian/MaterialDesign)
 [![Material Design Icons version](https://img.shields.io/badge/mdi--light-v0.2.63-blue.svg)](https://github.com/Templarian/MaterialDesignLight)
 
 This module provides [Material-UI][material-ui] `<SvgIcon />` components for all
@@ -23,9 +23,9 @@ There are three major versions of this package, each one for different Material-
 
 | Material-UI | mdi-material-ui | npm tag |
 |---|---|---|
-|^4.0.0|![npm](https://img.shields.io/npm/v/mdi-material-ui.svg)|latest|
-|^1.0.0, ^3.0.0|![npm](https://img.shields.io/npm/v/mdi-material-ui/mui-v3.svg)|mui-v3|
-|0.x|![npm](https://img.shields.io/npm/v/mdi-material-ui/legacy.svg)|legacy|
+|^4.0.0|[![npm](https://img.shields.io/npm/v/mdi-material-ui.svg)](https://www.npmjs.com/package/mdi-material-ui)|latest|
+|^1.0.0, ^3.0.0|[![npm](https://img.shields.io/npm/v/mdi-material-ui/mui-v3.svg)](https://www.npmjs.com/package/mdi-material-ui/v/mui-v3)|mui-v3|
+|0.x|[![npm](https://img.shields.io/npm/v/mdi-material-ui/legacy.svg)](https://www.npmjs.com/package/mdi-material-ui/v/legacy)|legacy|
 
 ## Usage
 Every icon is exported with its original name in PascalCase. So `coffee` becomes `Coffee`,
