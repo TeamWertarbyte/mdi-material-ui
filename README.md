@@ -23,9 +23,9 @@ There are three major versions of this package, each one for different Material-
 
 | Material-UI | mdi-material-ui | npm tag |
 |---|---|---|
-|^4.0.0|^6.0.0|latest|
-|^1.0.0, ^3.0.0|^5.0.0|mui-v3|
-|0.x|^4.0.0|legacy|
+|^4.0.0|![npm](https://img.shields.io/npm/v/mdi-material-ui.svg)|latest|
+|^1.0.0, ^3.0.0|![npm](https://img.shields.io/npm/v/mdi-material-ui/mui-v3.svg)|mui-v3|
+|0.x|![npm](https://img.shields.io/npm/v/mdi-material-ui/legacy.svg)|legacy|
 
 ## Usage
 Every icon is exported with its original name in PascalCase. So `coffee` becomes `Coffee`,
