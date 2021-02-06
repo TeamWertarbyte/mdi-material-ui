@@ -1,5 +1,5 @@
 # Material Design Icons for Material-UI
-[![npm](https://img.shields.io/npm/v/mdi-material-ui/mui-v3.svg)](https://www.npmjs.com/package/mdi-material-ui)
+
 [![Material Design Icons version](https://img.shields.io/badge/mdi-v5.8.55-blue.svg)](https://github.com/Templarian/MaterialDesign)
 [![Material Design Icons version](https://img.shields.io/badge/mdi--light-v0.2.63-blue.svg)](https://github.com/Templarian/MaterialDesignLight)
 
@@ -15,17 +15,29 @@ is exported.
 [md-icons]: https://materialdesignicons.com/
 
 ## Installation
+
 ```shell
 npm install mdi-material-ui@mui-v3 --save
 ```
 
+There are different major versions of this package, each one for different Material-UI releases. Note that this project does not follow semantic versioning. If Material Design Icons removes or renames icons, it will still be a minor version bump.
+
+| Material-UI    | mdi-material-ui                                                                                                           | npm tag |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------- | ------- |
+| ^5.0.0         | [![npm](https://img.shields.io/npm/v/mdi-material-ui/next.svg)](https://www.npmjs.com/package/mdi-material-ui)            | next    |
+| ^4.0.0         | [![npm](https://img.shields.io/npm/v/mdi-material-ui.svg)](https://www.npmjs.com/package/mdi-material-ui)                 | latest  |
+| ^1.0.0, ^3.0.0 | [![npm](https://img.shields.io/npm/v/mdi-material-ui/mui-v3.svg)](https://www.npmjs.com/package/mdi-material-ui/v/mui-v3) | mui-v3  |
+| 0.x            | [![npm](https://img.shields.io/npm/v/mdi-material-ui/legacy.svg)](https://www.npmjs.com/package/mdi-material-ui/v/legacy) | legacy  |
+
 ## Usage
+
 Every icon is exported with its original name in PascalCase. So `coffee` becomes `Coffee`,
 `cloud-print-outline` is exported as `CloudPrintOutline` and so on.
 
 The Material Design _Light_ icons are included in the `/light` subdirectory.
 
 ### With tree-shaking
+
 If your environment supports tree-shaking and you are sure that it works fine in your setup, you can simply import the icons as follows:
 
 ```js
@@ -39,8 +51,9 @@ import { Camera, Settings } from 'mdi-material-ui/light'
 ```
 
 ### Without tree-shaking
+
 If your environment doesn't support tree-shaking, you should only import the icons that you actually need in order to ensure that you don't end up bundling _all_ icons.
-  
+
 ```js
 import Coffee from 'mdi-material-ui/Coffee'
 import Food from 'mdi-material-ui/Food'
@@ -54,7 +67,8 @@ import Settings from 'mdi-material-ui/light/Settings'
 ```
 
 ## License
+
 The scripts included in this repository are licensed under the WTFPL.
 The icons are licensed under the MIT license (see [Material Design Icons](https://github.com/Templarian/MaterialDesign-SVG) and the [NOTICE][] file).
 
-[NOTICE]: https://github.com/TeamWertarbyte/mdi-material-ui/blob/master/NOTICE
+[notice]: https://github.com/TeamWertarbyte/mdi-material-ui/blob/master/NOTICE
