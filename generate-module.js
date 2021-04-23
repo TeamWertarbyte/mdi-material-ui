@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 const fse = require('fs-extra')
 const path = require('path')
-const pascalCase = require('pascal-case')
 const babel = require('@babel/core')
 const pick = require('lodash.pick')
 const filenameMap = require('./filenameMap')
@@ -29,7 +28,7 @@ function checkNameClashes (icons) {
   const icons = Object.entries(require('@mdi/js'))
     .filter(([name]) => name.indexOf('mdi') === 0)
     .map(([name, path]) => ({
-      name: pascalCase(name.substr(3)), // remove mdi prefix
+      name: name.substr(3), // remove mdi prefix
       filename: filenameMap[name.substr(3)],
       svgPath: path
     }))
@@ -38,7 +37,7 @@ function checkNameClashes (icons) {
   const lightIcons = Object.entries(require('@mdi/light-js'))
     .filter(([name]) => name.indexOf('mdil') === 0)
     .map(([name, path]) => ({
-      name: pascalCase(name.substr(4)), // remove mdil prefix
+      name: name.substr(4), // remove mdil prefix
       svgPath: path
     }))
   checkNameClashes(lightIcons)

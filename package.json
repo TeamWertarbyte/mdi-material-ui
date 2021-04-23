@@ -37,7 +37,6 @@
     "ava": "^3.11.1",
     "fs-extra": "^4.0.1",
     "lodash.pick": "^4.4.0",
-    "pascal-case": "^1.1.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-test-renderer": "^16.8.6",
