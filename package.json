@@ -32,9 +32,10 @@
     "@babel/preset-react": "^7.0.0",
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.1.5",
-    "@material-ui/core": "^5.0.0-alpha.24",
+    "@mui/material": "^5.0.0-rc.0",
     "@mdi/js": "^5.9.55",
     "@mdi/light-js": "^0.2.63",
+    "@mui/codemod": "^5.0.0-rc.0",
     "@storybook/react": "^6.1.21",
     "ava": "^3.11.1",
     "fs-extra": "^4.0.1",
@@ -45,7 +46,7 @@
     "xml2js": "^0.4.19"
   },
   "peerDependencies": {
-    "@material-ui/core": "^5.0.0 || ^5.0.0-alpha.24",
+    "@mui/material": "^5.0.0 || ^5.0.0-rc.0",
     "react": "^16.8.0 || ^17.0.0"
   },
   "scripts": {
