@@ -58,7 +58,7 @@ function checkNameClashes (icons) {
     }).code)
 
     // typescript definition
-    fse.writeFileSync(path.join(__dirname, 'package', `${filename || name}.d.ts`), `export { default } from '@material-ui/core/SvgIcon'
+    fse.writeFileSync(path.join(__dirname, 'package', `${filename || name}.d.ts`), `export { default } from '@mui/material/SvgIcon'
   `)
   }
 
@@ -75,7 +75,7 @@ function checkNameClashes (icons) {
     }).code)
 
     // typescript definition
-    fse.writeFileSync(path.join(__dirname, 'package', 'light', `${filename || name}.d.ts`), `export { default } from '@material-ui/core/SvgIcon'
+    fse.writeFileSync(path.join(__dirname, 'package', 'light', `${filename || name}.d.ts`), `export { default } from '@mui/material/SvgIcon'
   `)
   }
 
