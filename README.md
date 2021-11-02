@@ -24,8 +24,8 @@ There are different major versions of this package, each one for different Mater
 
 | Material-UI    | mdi-material-ui                                                                                                           | npm tag |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------- | ------- |
-| ^5.0.0         | [![npm](https://img.shields.io/npm/v/mdi-material-ui/next.svg)](https://www.npmjs.com/package/mdi-material-ui)            | next    |
-| ^4.0.0         | [![npm](https://img.shields.io/npm/v/mdi-material-ui.svg)](https://www.npmjs.com/package/mdi-material-ui)                 | latest  |
+| ^5.0.0         | [![npm](https://img.shields.io/npm/v/mdi-material-ui/next.svg)](https://www.npmjs.com/package/mdi-material-ui)            | latest  |
+| ^4.0.0         | [![npm](https://img.shields.io/npm/v/mdi-material-ui.svg)](https://www.npmjs.com/package/mdi-material-ui/v/mui-v4)        | mui-v4  |
 | ^1.0.0, ^3.0.0 | [![npm](https://img.shields.io/npm/v/mdi-material-ui/mui-v3.svg)](https://www.npmjs.com/package/mdi-material-ui/v/mui-v3) | mui-v3  |
 | 0.x            | [![npm](https://img.shields.io/npm/v/mdi-material-ui/legacy.svg)](https://www.npmjs.com/package/mdi-material-ui/v/legacy) | legacy  |
 
