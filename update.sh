@@ -6,4 +6,4 @@ npm test
 VERSION=`cat node_modules/@mdi/js/package.json | jq -r .version`
 git add --all
 git commit -m "Update to mdi $VERSION."
-git push origin v5
+git push origin mui-v3
