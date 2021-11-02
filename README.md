@@ -68,7 +68,7 @@ import Settings from 'mdi-material-ui/light/Settings'
 
 ## License
 
-The scripts included in this repository are licensed under the WTFPL.
+The scripts included in this repository are licensed under the MIT license.
 The icons are licensed under the MIT license (see [Material Design Icons](https://github.com/Templarian/MaterialDesign-SVG) and the [NOTICE][] file).
 
 [notice]: https://github.com/TeamWertarbyte/mdi-material-ui/blob/master/NOTICE
