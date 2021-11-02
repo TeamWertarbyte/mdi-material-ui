@@ -47,7 +47,7 @@ function checkNameClashes (icons) {
 
   for (const { name, filename, svgPath } of icons) {
     const code = `import createIcon from './util/createIcon'
-  export default createIcon('${svgPath}')
+  export default createIcon('${svgPath}', '${name}')
   `
 
     // commonjs module syntax
@@ -64,7 +64,7 @@ function checkNameClashes (icons) {
 
   for (const { name, filename, svgPath } of lightIcons) {
     const code = `import createIcon from '../util/createIcon'
-  export default createIcon('${svgPath}')
+  export default createIcon('${svgPath}', '${name}')
   `
 
     // commonjs module syntax

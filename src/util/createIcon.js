@@ -1,14 +1,4 @@
-import * as React from 'react'
-import SvgIcon from '@material-ui/core/SvgIcon'
+import * as React from "react";
+import { createSvgIcon } from "@material-ui/core/utils";
 
-export default (path) => {
-  const Icon = React.memo(
-    React.forwardRef((props, ref) => (
-      <SvgIcon {...props} ref={ref}>
-        <path d={path} />
-      </SvgIcon>
-    ))
-  )
-  Icon.muiName = 'SvgIcon'
-  return Icon
-}
+export default (path, name) => createSvgIcon(<path d={path} />, name);
