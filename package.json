@@ -47,7 +47,7 @@
   },
   "peerDependencies": {
     "@mui/material": "^5.0.0 || ^5.0.0-rc.0",
-    "react": "^16.8.0 || ^17.0.0"
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
   "scripts": {
     "storybook": "start-storybook -p 6006",
