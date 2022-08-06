@@ -1,5 +1,5 @@
 #!/bin/sh
-npm i --save-dev @mdi/js@latest @mdi/light-js@latest
+npm i --save-dev @mdi/js@^6.0.0 @mdi/light-js@latest
 ./generate-module.js
 npm test
 

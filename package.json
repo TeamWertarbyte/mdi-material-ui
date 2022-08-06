@@ -32,7 +32,7 @@
     "@babel/preset-react": "^7.0.0",
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.1.5",
-    "@mdi/js": "^6.7.96",
+    "@mdi/js": "^6.9.96",
     "@mdi/light-js": "^0.2.63",
     "@mui/codemod": "^5.0.0-rc.0",
     "@mui/material": "^5.0.0-rc.0",
