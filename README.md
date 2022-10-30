@@ -1,6 +1,6 @@
 # Material Design Icons for Material-UI
 
-[![Material Design Icons version](https://img.shields.io/badge/mdi-v6.9.96-blue.svg)](https://github.com/Templarian/MaterialDesign)
+[![Material Design Icons version](https://img.shields.io/badge/mdi-v7.0.96-blue.svg)](https://github.com/Templarian/MaterialDesign)
 [![Material Design Icons version](https://img.shields.io/badge/mdi--light-v0.2.63-blue.svg)](https://github.com/Templarian/MaterialDesignLight)
 
 This module provides [Material-UI][material-ui] `<SvgIcon />` components for all
