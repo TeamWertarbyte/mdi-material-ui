@@ -32,7 +32,7 @@
     "@babel/preset-react": "^7.0.0",
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.1.5",
-    "@mdi/js": "^7.2.96",
+    "@mdi/js": "^7.4.47",
     "@mdi/light-js": "^0.2.63",
     "@mui/codemod": "^5.0.0-rc.0",
     "@mui/material": "^5.0.0-rc.0",
@@ -42,8 +42,7 @@
     "lodash.pick": "^4.4.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-test-renderer": "^18.1.0",
-    "xml2js": "^0.4.19"
+    "react-test-renderer": "^18.1.0"
   },
   "peerDependencies": {
     "@mui/material": "^5.0.0 || ^5.0.0-rc.0",
