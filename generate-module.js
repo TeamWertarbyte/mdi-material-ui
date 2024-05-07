@@ -44,16 +44,23 @@ function checkNameClashes (icons) {
 
   fse.removeSync(path.join(__dirname, 'package'))
   fse.mkdirpSync(path.join(__dirname, 'package', 'light'))
+  fse.removeSync(path.join(__dirname, 'package', 'esm'))
+  fse.mkdirpSync(path.join(__dirname, 'package', 'esm', 'light'))
 
   for (const { name, filename, svgPath } of icons) {
     const code = `import createIcon from './util/createIcon'
   export default createIcon('${svgPath}', '${name}')
   `
 
-    // commonjs module syntax
+    // es module
+    fse.writeFileSync(path.join(__dirname, 'package', 'esm', `${filename || name}.js`), babel.transform(code, {
+      presets: ['@babel/preset-react', ['@babel/preset-env', { modules: false }]],
+      compact: process.env.NODE_ENV === 'production'
+    }).code)
+
+    // commonjs module
     fse.writeFileSync(path.join(__dirname, 'package', `${filename || name}.js`), babel.transform(code, {
       presets: ['@babel/preset-react', '@babel/preset-env'],
-      plugins: ['@babel/plugin-proposal-class-properties'],
       compact: process.env.NODE_ENV === 'production'
     }).code)
 
@@ -67,10 +74,15 @@ function checkNameClashes (icons) {
   export default createIcon('${svgPath}', '${name}')
   `
 
-    // commonjs module syntax
+    // es module
+    fse.writeFileSync(path.join(__dirname, 'package', 'esm', 'light', `${filename || name}.js`), babel.transform(code, {
+      presets: ['@babel/preset-react', ['@babel/preset-env', { modules: false }]],
+      compact: process.env.NODE_ENV === 'production'
+    }).code)
+
+    // commonjs module
     fse.writeFileSync(path.join(__dirname, 'package', 'light', `${filename || name}.js`), babel.transform(code, {
       presets: ['@babel/preset-react', '@babel/preset-env'],
-      plugins: ['@babel/plugin-proposal-class-properties'],
       compact: process.env.NODE_ENV === 'production'
     }).code)
 
@@ -79,10 +91,10 @@ function checkNameClashes (icons) {
   `)
   }
 
-  const generateIndexFiles = (destination, icons) => {
-    // es2015 module syntax
+  const generateIndexFiles = (destination, esmDestination, icons) => {
+    // es module
     const allExports = icons.map(({ name, filename }) => `export { default as ${name} } from './${filename || name}'`).join('\n')
-    fse.writeFileSync(path.join(destination, 'index.es.js'), allExports)
+    fse.writeFileSync(path.join(esmDestination, 'index.js'), allExports)
   
     // typescript index definition (looks exactly the same)
     fse.writeFileSync(path.join(destination, 'index.d.ts'), allExports)
@@ -94,15 +106,23 @@ function checkNameClashes (icons) {
     }).code)
   }
 
-  generateIndexFiles(path.join(__dirname, 'package'), icons)
-  generateIndexFiles(path.join(__dirname, 'package', 'light'), lightIcons)
+  generateIndexFiles(path.join(__dirname, 'package'), path.join(__dirname, 'package', 'esm'), icons)
+  generateIndexFiles(path.join(__dirname, 'package', 'light'), path.join(__dirname, 'package', 'esm', 'light'), lightIcons)
 
   // createIcon function
   fse.mkdirSync(path.join(__dirname, 'package', 'util'))
+  fse.mkdirSync(path.join(__dirname, 'package', 'esm', 'util'))
   fse.writeFileSync(
     path.join(__dirname, 'package', 'util', 'createIcon.js'),
     babel.transform(fse.readFileSync(path.join(__dirname, 'src', 'util', 'createIcon.js')), {
       presets: [['@babel/preset-react', { runtime: "automatic" }], '@babel/preset-env'],
+      compact: process.env.NODE_ENV === 'production'
+    }).code
+  )
+  fse.writeFileSync(
+    path.join(__dirname, 'package', 'esm', 'util', 'createIcon.js'),
+    babel.transform(fse.readFileSync(path.join(__dirname, 'src', 'util', 'createIcon.js')), {
+      presets: [['@babel/preset-react', { runtime: "automatic" }], ['@babel/preset-env', { modules: false }]],
       compact: process.env.NODE_ENV === 'production'
     }).code
   )

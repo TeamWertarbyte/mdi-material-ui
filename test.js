@@ -25,7 +25,7 @@ for (const iconName of Object.keys(commonjsIcons)) {
 
 test("ES module index file", (t) => {
   const esmReExports = fs
-    .readFileSync("./package/index.es.js", "utf-8")
+    .readFileSync("./package/esm/index.js", "utf-8")
     .split("\n")
     .filter((line) => line.length > 0);
   t.is(esmReExports.length, Object.keys(commonjsIcons).length);
@@ -52,7 +52,7 @@ for (const iconName of Object.keys(commonjsIconsLight)) {
 
 test("mdi-light ES module index file", (t) => {
   const esmReExports = fs
-    .readFileSync("./package/light/index.es.js", "utf-8")
+    .readFileSync("./package/esm/light/index.js", "utf-8")
     .split("\n")
     .filter((line) => line.length > 0);
   t.is(esmReExports.length, Object.keys(commonjsIconsLight).length);
