@@ -102,8 +102,7 @@ function checkNameClashes (icons) {
   fse.writeFileSync(
     path.join(__dirname, 'package', 'util', 'createIcon.js'),
     babel.transform(fse.readFileSync(path.join(__dirname, 'src', 'util', 'createIcon.js')), {
-      presets: ['@babel/preset-react', '@babel/preset-env'],
-      plugins: ['@babel/plugin-proposal-class-properties'],
+      presets: [['@babel/preset-react', { runtime: "automatic" }], '@babel/preset-env'],
       compact: process.env.NODE_ENV === 'production'
     }).code
   )
