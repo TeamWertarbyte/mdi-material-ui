@@ -48,9 +48,11 @@ function checkNameClashes (icons) {
   fse.mkdirpSync(path.join(__dirname, 'package', 'esm', 'light'))
 
   for (const { name, filename, svgPath } of icons) {
-    const code = `import createIcon from './util/createIcon'
-  export default createIcon('${svgPath}', '${name}')
-  `
+    const code = `
+      "use client";
+      import createIcon from './util/createIcon'
+      export default createIcon('${svgPath}', '${name}')
+    `
 
     // es module
     fse.writeFileSync(path.join(__dirname, 'package', 'esm', `${filename || name}.js`), babel.transform(code, {
@@ -70,9 +72,11 @@ function checkNameClashes (icons) {
   }
 
   for (const { name, filename, svgPath } of lightIcons) {
-    const code = `import createIcon from '../util/createIcon'
-  export default createIcon('${svgPath}', '${name}')
-  `
+    const code = `
+      "use client";
+      import createIcon from '../util/createIcon'
+      export default createIcon('${svgPath}', '${name}')
+    `
 
     // es module
     fse.writeFileSync(path.join(__dirname, 'package', 'esm', 'light', `${filename || name}.js`), babel.transform(code, {
