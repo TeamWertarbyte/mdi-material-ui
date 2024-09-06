@@ -33,8 +33,7 @@
     "@emotion/styled": "^11.1.5",
     "@mdi/js": "^7.4.47",
     "@mdi/light-js": "^0.2.63",
-    "@mui/codemod": "^5.0.0-rc.0",
-    "@mui/material": "^5.0.0-rc.0",
+    "@mui/material": "^6.0.2",
     "@storybook/react": "^6.5.6",
     "ava": "^3.15.0",
     "fs-extra": "^4.0.1",
@@ -44,7 +43,7 @@
     "react-test-renderer": "^18.1.0"
   },
   "peerDependencies": {
-    "@mui/material": "^5.0.0 || ^5.0.0-rc.0",
+    "@mui/material": "^5.0.0 || ^6.0.0",
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
   "scripts": {
