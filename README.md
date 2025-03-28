@@ -22,12 +22,12 @@ npm install mdi-material-ui --save
 
 There are different major versions of this package, each one for different Material-UI releases. Note that this project does not follow semantic versioning. If Material Design Icons removes or renames icons, it will still be a minor version bump.
 
-| Material-UI    | mdi-material-ui                                                                                                                           | npm tag |
-| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| ^5.0.0, ^6.0.0 | [![npm](https://img.shields.io/npm/v/mdi-material-ui.svg)](https://www.npmjs.com/package/mdi-material-ui)                                 | latest  |
-| ^4.0.0         | [![npm](https://img.shields.io/npm/v/mdi-material-ui/mui-v4.svg)](https://www.npmjs.com/package/mdi-material-ui/v/mui-v4)                 | mui-v4  |
-| ^1.0.0, ^3.0.0 | [![npm](https://img.shields.io/npm/v/mdi-material-ui/mui-v3.svg)](https://www.npmjs.com/package/mdi-material-ui/v/mui-v3)                 | mui-v3  |
-| 0.x            | [![npm](https://img.shields.io/npm/v/mdi-material-ui/legacy.svg?color=yellow)](https://www.npmjs.com/package/mdi-material-ui/v/legacy) \* | legacy  |
+| Material-UI            | mdi-material-ui                                                                                                                           | npm tag |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| ^5.0.0, ^6.0.0, ^7.0.0 | [![npm](https://img.shields.io/npm/v/mdi-material-ui.svg)](https://www.npmjs.com/package/mdi-material-ui)                                 | latest  |
+| ^4.0.0                 | [![npm](https://img.shields.io/npm/v/mdi-material-ui/mui-v4.svg)](https://www.npmjs.com/package/mdi-material-ui/v/mui-v4)                 | mui-v4  |
+| ^1.0.0, ^3.0.0         | [![npm](https://img.shields.io/npm/v/mdi-material-ui/mui-v3.svg)](https://www.npmjs.com/package/mdi-material-ui/v/mui-v3)                 | mui-v3  |
+| 0.x                    | [![npm](https://img.shields.io/npm/v/mdi-material-ui/legacy.svg?color=yellow)](https://www.npmjs.com/package/mdi-material-ui/v/legacy) \* | legacy  |
 
 \* mdi-material-ui v4 (for Material-UI v0) is not updated anymore
 
