@@ -2,7 +2,6 @@
 const fse = require('fs-extra')
 const path = require('path')
 const babel = require('@babel/core')
-const pick = require('lodash.pick')
 const filenameMap = require('./filenameMap')
 
 function checkNameClashes (icons) {
@@ -149,7 +148,7 @@ function checkNameClashes (icons) {
 
   const packageJson = require('./package.json')
   packageJson.name = 'mdi-material-ui'
-  fse.writeFileSync(path.join(__dirname, 'package', 'package.json'), JSON.stringify(pick(packageJson, [
+  fse.writeFileSync(path.join(__dirname, 'package', 'package.json'), JSON.stringify(Object.fromEntries([
     'name',
     'version',
     'description',
@@ -164,5 +163,5 @@ function checkNameClashes (icons) {
     'bugs',
     'homepage',
     'peerDependencies'
-  ]), null, 2), 'utf-8')
+  ].map(key => [key, packageJson[key]])), null, 2), 'utf-8')
 })()
